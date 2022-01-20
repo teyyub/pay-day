@@ -111,7 +111,7 @@ public class AccountController {
 	 * @return The new balance of the account with HTTP OK.
 	 */
 	@RequestMapping(value = "/accounts/{userName}/decreaseBalance/{amount}", method = RequestMethod.GET)
-	public ResponseEntity<Double> decreaseBalance(@PathVariable("userId") final String userName, @PathVariable("amount") final double amount) {
+	public ResponseEntity<Double> decreaseBalance(@PathVariable("userName") final String userName, @PathVariable("amount") final double amount) {
 
 		logger.debug("AccountController.decreaseBalance: id='" + userName + "', amount='" + amount + "'");
 
@@ -146,7 +146,7 @@ public class AccountController {
 	 * @return The new balance of the account with HTTP OK.
 	 */
 	@RequestMapping(value = "/accounts/{userName}/increaseBalance/{amount}", method = RequestMethod.GET)
-	public ResponseEntity<Double> increaseBalance(@PathVariable("userId") final String userName, @PathVariable("amount") final double amount) {
+	public ResponseEntity<Double> increaseBalance(@PathVariable("userName") final String userName, @PathVariable("amount") final double amount) {
 
 		logger.debug("AccountController.increaseBalance: id='" + userName + "', amount='" + amount + "'");
 

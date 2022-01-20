@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class PortfolioService {
 	@Autowired
 	QuoteRemoteCallService quoteService;
 
-
+	@Bean
 	public RestTemplate restTemplate;
 
 	// @Value("${pivotal.quotesService.name}")
@@ -122,6 +123,7 @@ public class PortfolioService {
 			double amount = order.getQuantity()
 					* order.getPrice().doubleValue()
 					+ order.getOrderFee().doubleValue();
+			System.out.println("restTemplate="+restTemplate);
 			ResponseEntity<Double> result = restTemplate.getForEntity("http://localhost:8080/accounts/{userid}/decreaseBalance/{amount}",
 					Double.class, order.getAccountId(), amount);
 			if (result.getStatusCode() == HttpStatus.OK) {

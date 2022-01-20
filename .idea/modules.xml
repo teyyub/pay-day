@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bank.iml" filepath="$PROJECT_DIR$/bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stock-service/stock-service.iml" filepath="$PROJECT_DIR$/stock-service/stock-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trade-account/trade-account.iml" filepath="$PROJECT_DIR$/trade-account/trade-account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trade-portfolio/trade-portfolio.iml" filepath="$PROJECT_DIR$/trade-portfolio/trade-portfolio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trade-quote/trade-quote.iml" filepath="$PROJECT_DIR$/trade-quote/trade-quote.iml" />
+    </modules>
+  </component>
+</project>

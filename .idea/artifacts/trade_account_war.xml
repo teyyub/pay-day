@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="trade-account:war">
+    <output-path>$PROJECT_DIR$/trade-account/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>trade-account</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="trade-account-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="trade-account:war exploded" />
+    </root>
+  </artifact>
+</component>

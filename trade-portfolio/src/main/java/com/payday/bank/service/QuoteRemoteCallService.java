@@ -44,7 +44,7 @@ public class QuoteRemoteCallService {
             commandProperties = {@HystrixProperty(name="execution.timeout.enabled", value="false")})
 	public List<Quote> getQuotes(String symbols) {
 		logger.debug("retrieving multiple quotes: " + symbols);
-		Quote[] quotesArr = restTemplate.getForObject("http://localhost:8082/quotes?q={symbols}", Quote[].class, symbols);
+		Quote[] quotesArr = restTemplate.getForObject("http://localhost:8890/stocks/?query={symbols}", Quote[].class, symbols);
 		List<Quote> quotes = Arrays.asList(quotesArr);
 		logger.debug("Received quotes: {}",quotes);
 		return quotes;

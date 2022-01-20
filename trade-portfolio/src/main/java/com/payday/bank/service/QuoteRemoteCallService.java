@@ -68,17 +68,17 @@ public class QuoteRemoteCallService {
 		return getQuotes(builder.toString());
 	}
 
-    @SuppressWarnings("unused")
-    private List<Quote> getQuoteFallback(String symbols) {
-        List<Quote> result = new ArrayList<>();
-        String[] splitSymbols = symbols.split(",");
-
-        for (String symbol : splitSymbols) {
-            Quote quote = new Quote();
-            quote.setSymbol(symbol);
-            quote.setStatus("FAILED");
-            result.add( quote );
-        }
-        return result;
-    }
+//    @SuppressWarnings("unused")
+//    private List<Quote> getQuoteFallback(String symbols) {
+//        List<Quote> result = new ArrayList<>();
+//        String[] splitSymbols = symbols.split(",");
+//
+//        for (String symbol : splitSymbols) {
+//            Quote quote = new Quote();
+//            quote.setSymbol(symbol);
+//            quote.setStatus("FAILED");
+//            result.add( quote );
+//        }
+//        return result;
+//    }
 }

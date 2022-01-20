@@ -24,19 +24,19 @@ public class Stock {
     @Column(name = "id")
     private Long id;
 
-    @JsonProperty("Name")
+//    @JsonProperty("Name")
     private String name;
 
-    @JsonProperty("Symbol")
+//    @JsonProperty("Symbol")
     private String symbol;
-    @JsonProperty("LastPrice")
+//    @JsonProperty("LastPrice")
     private BigDecimal lastPrice;
-    @JsonProperty("Change")
+//    @JsonProperty("Change")
     private BigDecimal change;
-    @JsonProperty("ChangePercent")
+//    @JsonProperty("ChangePercent")
     private Float changePercent;
-    @JsonProperty("Timestamp")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="EEE MMM dd HH:mm:ss zzzXXX yyyy", locale="ENGLISH")
+//    @JsonProperty("Timestamp")
+//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="EEE MMM dd HH:mm:ss zzzXXX yyyy", locale="ENGLISH")
     private Date actionDate;
 
     public Stock(String name, String symbol, BigDecimal lastPrice, BigDecimal change, Float changePercent, Date date) {

@@ -45,8 +45,8 @@ public class PortfolioController {
 	@RequestMapping(value = "/portfolio/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Portfolio> getPortfolio(@PathVariable("id") final String accountId) {
 		logger.debug("PortfolioController: Retrieving portfolio with user id:" + accountId);
-		Portfolio folio = service.getPortfolio(accountId);
-		logger.debug("PortfolioController: Retrieved portfolio:" + folio);
+		Portfolio folio =  service.getPortfolio(accountId);
+//		logger.debug("PortfolioController: Retrieved portfolio:" + folio);
 		return new ResponseEntity<Portfolio>(folio, getNoCacheHeaders(), HttpStatus.OK);
 	}
 
@@ -70,7 +70,7 @@ public class PortfolioController {
 
 		//TODO: can do a test to ensure accountId == order.getAccountId();
 
-		Order savedOrder = service.addOrder(order);
+		Order savedOrder = (Order) service.addOrder(order).getBody();
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setLocation(builder.path("/portfolio/{id}")
 				.buildAndExpand(accountId).toUri());

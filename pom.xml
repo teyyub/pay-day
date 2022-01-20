@@ -22,6 +22,7 @@
         <module>trade-portfolio</module>
         <module>trade-quote</module>
         <module>stock-service</module>
+        <module>notification-service</module>
     </modules>
     <dependencies>
 

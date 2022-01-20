@@ -10,10 +10,12 @@
         <module name="trade-quote" />
         <module name="trade-portfolio" />
         <module name="trade-account" />
+        <module name="notification-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bank" target="1.8" />
+      <module name="notification-service" target="1.8" />
       <module name="stock-service" target="1.8" />
       <module name="trade-account" target="1.8" />
       <module name="trade-portfolio" target="1.8" />
@@ -22,6 +24,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="notification-service" options="-parameters" />
       <module name="stock-service" options="-parameters" />
       <module name="trade-account" options="-parameters" />
       <module name="trade-portfolio" options="-parameters" />

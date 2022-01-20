@@ -69,15 +69,17 @@ public class AccountService {
 		logger.debug("AccountService.findAccount: id=" + id);
 
 		Account account = accounts.findByUserName(id);
-		if (account == null) {
-			logger.warn("AccountService.findAccount: could not find account with id: " + id);
-			throw new NoRecordsFoundException();
-		}
-
-		logger.info(String.format("AccountService.findAccount - retrieved account with id: %s. Payload is: %s", id, account));
+//		if (account == null) {
+//			logger.warn("AccountService.findAccount: could not find account with id: " + id);
+//			throw new NoRecordsFoundException();
+//		}
+//
+//		logger.info(String.format("AccountService.findAccount - retrieved account with id: %s. Payload is: %s", id, account));
 
 		return account;
 	}
+
+
 
 	/**
 	 * Retrieves the account by the authorization token associated with that

@@ -19,10 +19,10 @@
     </properties>
     <modules>
         <module>trade-account</module>
-        <module>trade-portfolio</module>
-        <module>trade-quote</module>
+        <module>portfolio-service</module>
         <module>stock-service</module>
         <module>notification-service</module>
+        <module>ldap-service</module>
     </modules>
     <dependencies>
 

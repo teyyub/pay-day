@@ -1,11 +1,17 @@
 package com.example.stock.services;
 
-import com.example.stock.Stock;
-import com.example.stock.repos.StockRepository;
+import com.example.stock.domain.Stock;
+import com.example.stock.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/**
+ *
+ * @author anar
+ *
+ */
 
 @Service
 public class StockService {

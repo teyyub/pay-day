@@ -1,7 +1,5 @@
 package com.payday.bank.controller;
 
-
-
 import java.util.Map;
 
 import com.payday.bank.domain.AuthenticationRequest;
@@ -11,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,13 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 /**
- * REST controller for the accounts microservice.
- * Provides the following endpoints:
- * <p><ul>
- * <li>POST <code>/login</code> login request.
- * <li>GET <code>/logout/{userId}</code> logs out the account with given user id.
- * </ul><p>
- * @author David Ferreira Pinto
+ *
+ * @author anar
  *
  */
 @RestController

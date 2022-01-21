@@ -2,7 +2,6 @@ package com.payday.bank.controller;
 
 import java.math.BigDecimal;
 
-
 import com.payday.bank.domain.Account;
 import com.payday.bank.service.AccountService;
 import org.slf4j.Logger;
@@ -22,21 +21,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 
 /**
- * REST controller for the accounts microservice. Provides the following
- * endpoints:
- * <p>
- * <ul>
- * <li>GET <code>/accounts/{id}</code> retrieves the account with given id.
- * <li>POST <code>/accounts</code> stores the account object passed in body.
- * <li>GET <code>/accounts/{id}/increaseBalance/{amount}</code> increases the
- * balance of the account with given id by amount.
- * <li>GET <code>/accounts/{id}/decreaseBalance/{amount}</code> decreases the
- * balance of the account with given id by amount.
- * </ul>
- * <p>
  *
- * @author David Ferreira Pinto
- * @author Maxim Avezbakiev
+ * @author anar
+ *
  */
 @RestController
 public class AccountController {

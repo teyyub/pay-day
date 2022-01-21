@@ -6,11 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="stock-service" />
-        <module name="trade-quote" />
-        <module name="trade-portfolio" />
         <module name="trade-account" />
         <module name="notification-service" />
+        <module name="trade-portfolio" />
+        <module name="stock-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -2,13 +2,17 @@ package com.payday.bank.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 
 import com.payday.bank.domain.Account;
 import com.payday.bank.exception.AuthenticationException;
+import com.payday.bank.exception.ItemNotFoundException;
 import com.payday.bank.exception.NoRecordsFoundException;
 import com.payday.bank.repository.AccountRepository;
+import com.payday.bank.response.MessageResponse;
+import com.payday.bank.response.Reason;
 import com.payday.bank.util.BcryptEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+
 /**
- * The service in the accounts microservice.
- * 
- * @author David Ferreira Pinto
+ *
+ * @author anar
  *
  */
 @Service
@@ -45,16 +50,21 @@ public class AccountService {
 
 		logger.debug("AccountService.findAccount: id=" + id);
 
-		Account account = accounts.findById(id).get();
-		if (account == null) {
-			logger.warn("AccountService.findAccount: could not find account with id: " + id);
-			throw new NoRecordsFoundException();
-		}
+//		EduDegreeEntity rankInDb = eduDegreeRepository.findById(id)
+//				.orElseThrow(() -> new ItemNotFoundException(Reason.NOT_FOUND.getValue()));
+
+	    Account  account = accounts.findById(id).orElseThrow(()-> new ItemNotFoundException(Reason.NOT_FOUND.getValue()));
+//		if (account == null) {
+//			logger.warn("AccountService.findAccount: could not find account with id: " + id);
+//			throw new ItemNotFoundException(Reason.NOT_FOUND.getValue());
+//		}
 
 		logger.info(String.format("AccountService.findAccount - retrieved account with id: %s. Payload is: %s", id, account));
 
 		return account;
 	}
+
+
 
 	/**
 	 * Retrieve an account with given id. The id here is the unique user id
@@ -79,33 +89,6 @@ public class AccountService {
 		return account;
 	}
 
-
-
-	/**
-	 * Retrieves the account by the authorization token associated with that
-	 * account and current login.
-	 * 
-	 * @param token
-	 *            The token to search for.
-	 * @return The account object if found or AuthenticationException otherwise.
-	 */
-//	@Cacheable(value = "authorizationCache")
-//	public Account findAccountprofileByAuthtoken(String token) {
-//		logger.debug("AccountService.findAccountprofileByAuthtoken looking for authToken: " + token);
-//		if (token == null) {
-//			// TODO: no point in checking database. throw exception here.
-//			logger.error("AccountService.findAccountprofileByAuthtoken(): token is null");
-//			throw new AuthenticationException("Authorization Token is null");
-//		}
-//		Account accountProfile = null;
-//		accountProfile = accounts.findByAuthtoken(token);
-//		if (accountProfile == null) {
-//			logger.error("AccountService.findAccountprofileByAuthtoken(): accountProfile is null for token=" + token);
-//			throw new AuthenticationException("Authorization Token not found");
-//		}
-//
-//		return accountProfile;
-//	}
 
 	/**
 	 * Saves the given account in the repository.

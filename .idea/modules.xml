@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/stock-service/stock-service.iml" filepath="$PROJECT_DIR$/stock-service/stock-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/trade-account/trade-account.iml" filepath="$PROJECT_DIR$/trade-account/trade-account.iml" />
       <module fileurl="file://$PROJECT_DIR$/trade-portfolio/trade-portfolio.iml" filepath="$PROJECT_DIR$/trade-portfolio/trade-portfolio.iml" />
-      <module fileurl="file://$PROJECT_DIR$/trade-quote/trade-quote.iml" filepath="$PROJECT_DIR$/trade-quote/trade-quote.iml" />
     </modules>
   </component>
 </project>

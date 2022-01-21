@@ -7,9 +7,7 @@ import java.util.UUID;
 
 
 import com.payday.bank.domain.Account;
-import com.payday.bank.exception.AuthenticationException;
-import com.payday.bank.exception.ItemNotFoundException;
-import com.payday.bank.exception.NoRecordsFoundException;
+import com.payday.bank.exception.*;
 import com.payday.bank.repository.AccountRepository;
 import com.payday.bank.response.MessageResponse;
 import com.payday.bank.response.Reason;
@@ -76,15 +74,19 @@ public class AccountService {
 	 */
 	public Account findAccount(String id) {
 
-		logger.debug("AccountService.findAccount: id=" + id);
+		logger.info("AccountService.findAccount: id=" + id);
 
 		Account account = accounts.findByUserName(id);
-//		if (account == null) {
-//			logger.warn("AccountService.findAccount: could not find account with id: " + id);
-//			throw new NoRecordsFoundException();
-//		}
-//
-//		logger.info(String.format("AccountService.findAccount - retrieved account with id: %s. Payload is: %s", id, account));
+
+
+		System.out.println("111 " +account);
+
+		if (account == null) {
+			logger.warn("AccountService.findAccount: could not find account with id: " + id);
+			throw new ItemNotFoundException(Reason.NOT_FOUND.getValue());
+		}
+
+		logger.info(String.format("AccountService.findAccount - retrieved account with id: %s. Payload is: %s", id, account));
 
 		return account;
 	}
@@ -98,6 +100,31 @@ public class AccountService {
 	 * @return the id of the account.
 	 */
 	public Integer saveAccount(Account accountRequest) {
+
+
+		Account accountinDB = accounts.findByUserName(accountRequest.getUserName());
+		if (accountinDB != null) {
+			logger.warn("AccountService.findAccount: could find account with id: " + accountRequest.getUserName());
+			throw new NameAlreadyExistException(Reason.ALREADY_EXIST.getValue());
+		}
+
+		logger.debug("AccountService.saveAccount:" + accountRequest.toString());
+		// need to set some stuff that cannot be null!
+		if (accountRequest.getLogincount() == null) {
+			accountRequest.setLogincount(0);
+		}
+		if (accountRequest.getLogoutcount() == null) {
+			accountRequest.setLogoutcount(0);
+		}
+
+		accountRequest.setPassword(BcryptEncoder.endoce(accountRequest.getPassword()));
+		Account account = accounts.save(accountRequest);
+		logger.info("AccountService.saveAccount: account saved: " + account);
+		return account.getId();
+	}
+
+	public Integer updateAccount(Account accountRequest) {
+
 
 		logger.debug("AccountService.saveAccount:" + accountRequest.toString());
 		// need to set some stuff that cannot be null!

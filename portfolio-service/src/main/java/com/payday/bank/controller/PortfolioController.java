@@ -55,7 +55,7 @@ public class PortfolioController {
 
         //TODO: can do a test to ensure userName == order.getUserName();
 
-        Integer savedOrder = (Integer) service.addOrder(order).getBody();
+        Order savedOrder = (Order) service.addOrder(order).getBody();
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(builder.path("/portfolio/{userName}")
                 .buildAndExpand(userName).toUri());
@@ -68,17 +68,17 @@ public class PortfolioController {
 //		}
 
 
-        if (savedOrder == 1) {
-            return new ResponseEntity<>("Order created", responseHeaders, HttpStatus.CREATED);
-        } else if (savedOrder == 2) {
-            return new ResponseEntity<>("Not enough balance", responseHeaders, HttpStatus.OK);
-        } else if (savedOrder == 3) {
-            return new ResponseEntity<>("Not enough quantity", responseHeaders, HttpStatus.OK);
-        } else if (savedOrder == 4) {
-            return new ResponseEntity<>("Negative value", responseHeaders, HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>("Dont have this symbol", responseHeaders, HttpStatus.OK);
-        }
+//        if (savedOrder == 1) {
+            return new ResponseEntity<>(savedOrder, responseHeaders, HttpStatus.CREATED);
+//        } else if (savedOrder == 2) {
+//            return new ResponseEntity<>("Not enough balance", responseHeaders, HttpStatus.OK);
+//        } else if (savedOrder == 3) {
+//            return new ResponseEntity<>("Not enough quantity", responseHeaders, HttpStatus.OK);
+//        } else if (savedOrder == 4) {
+//            return new ResponseEntity<>("Negative value", responseHeaders, HttpStatus.OK);
+//        }else {
+//            return new ResponseEntity<>("Dont have this symbol", responseHeaders, HttpStatus.OK);
+//        }
     }
 
     private HttpHeaders getNoCacheHeaders() {

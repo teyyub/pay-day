@@ -1,8 +1,12 @@
 package com.payday.bank.service;
 
 import com.payday.bank.domain.*;
+import com.payday.bank.exception.ItemNotFoundException;
+import com.payday.bank.exception.NotEnoughException;
+import com.payday.bank.exception.NotEnoughQuantityException;
 import com.payday.bank.repository.OrderRepository;
 import com.payday.bank.repository.SellRepository;
+import com.payday.bank.response.Reason;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,12 +114,12 @@ public class PortfolioService {
                     Integer id = restTemplate.postForObject("http://localhost:8082/notification/", entity, Integer.class);
                     System.out.println("id=" + id);
 
-                    return ResponseEntity.ok(1);
+                    return ResponseEntity.ok(db);
                 } else {
                     // TODO: throw exception - not enough funds!
                     // SK - Whats the expected behaviour?
                     logger.warn("PortfolioService:addOrder - decresing balance HTTP not ok: ");
-                    return ResponseEntity.ok(2);
+                    throw new NotEnoughException(Reason.NOT_ENOUGH_AMOUNT.getValue());
                 }
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -138,12 +142,12 @@ public class PortfolioService {
                 System.out.println(currentOrder);
 
                 if (currentOrder==null){
-                    return ResponseEntity.ok(5);
+                    throw new ItemNotFoundException(Reason.NOT_FOUND.getValue());
                 }
                 int quantity = currentOrder.getQuantity() - order.getQuantity();
                 System.out.println("quantity="+quantity);
                 if(quantity<=0){
-                    return ResponseEntity.ok(3);
+                    throw new NotEnoughQuantityException(Reason.NOT_ENOUGH_QUANTITY.getValue());
                 }
                 currentOrder.setQuantity(quantity);
                 repository.save(currentOrder);
@@ -162,11 +166,11 @@ public class PortfolioService {
                 notificationEntityConvert(order, entity);
                 Integer id = restTemplate.postForObject("http://localhost:8082/notification/", entity, Integer.class);
                 System.out.println("id=" + id);
-                return ResponseEntity.ok(1);
+                return ResponseEntity.ok(order);
             } else {
                 // TODO: throw exception - negative value???
                 logger.warn("PortfolioService:addOrder - increasing balance HTTP not ok: ");
-                return ResponseEntity.ok(4);
+                throw new NotEnoughException(Reason.NOT_ENOUGH_QUANTITY.getValue());
             }
         }
     }

@@ -1,7 +1,7 @@
 package com.payday.notification;
 
 
-import com.example.notification.domain.Notification;
+import com.payday.notification.domain.Notification;
 import com.payday.notification.repository.NotificationRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -33,14 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @WebMvcTest(NotificationServiceApplication.class)
 public class NotificationServiceApplicationTests {
-
-//	private final String SPRING_BOOT_MATCH = "Spring Boot";
-//	private final String CLOUD_MATCH = "Cloud";
-//	@SuppressWarnings("rawtypes")
-//	private HttpMessageConverter mappingJackson2HttpMessageConverter;
-//	private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-//			MediaType.APPLICATION_JSON.getSubtype(),
-//			Charset.forName("utf8"));
 
 	@Autowired
 	private MockMvc mockMvc;

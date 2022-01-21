@@ -94,9 +94,4 @@ public class PortfolioController {
     }
 
 
-    @GetMapping(value = "/report1")
-    public ResponseEntity<?> getReport1() {
-        return ResponseEntity.ok("Ok");
-    }
-
 }

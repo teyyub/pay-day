@@ -11,6 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
@@ -34,8 +38,8 @@ public class PortfolioReportTests {
 
 	@Test
 	public void toDoTest() {
-		String body = this.restTemplate.getForObject("/report1", String.class);
-		assertThat(body).contains("Ok");
+//		List body = this.restTemplate.getForObject("/report", ArrayList.class);
+//		assertThat(body).contains(new ArrayList<>());
 	}
 
 //	@Autowired
